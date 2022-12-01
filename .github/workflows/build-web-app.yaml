@@ -3,12 +3,17 @@ name: Build Web App
 on:
   workflow_dispatch:
   push:
-    - main
-    - develop
+    branches:
+      - main
+      - develop
+    paths:
+      - 'apps/web/**'
   pull_request:
     branches:
       - main
       - develop
+    paths:
+      - 'apps/web/**'
 
 env:
   CARGO_TERM_COLOR: always
