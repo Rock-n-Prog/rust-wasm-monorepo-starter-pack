@@ -10,11 +10,13 @@ Check the [project board](https://github.com/orgs/Rock-n-Prog/projects/2/views/1
 
 ## Status
 
-TODO: Add status badges
+| Name          | Type | Status                                                                                                                                                                                                                               |
+|---------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Build Web App | App  | [![Build Web App](https://github.com/rock-n-prog/rust-wasm-monorepo-starter-pack/actions/workflows/build-web-app.yml/badge.svg)](https://github.com/rock-n-prog/rust-wasm-monorepo-starter-pack/actions/workflows/build-web-app.yml) |
 
 ## Apps
 
-TODO: Add apps
+- [`apps/web`](apps/web): Yew web app
 
 ## Packages
 

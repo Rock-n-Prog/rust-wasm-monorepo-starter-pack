@@ -1,0 +1,19 @@
+[package]
+name = "acme-web"
+version = "0.0.0"
+edition = "2021"
+description = "Yew web app for ACEM"
+readme = "README.md"
+repository = "https://github.com/Rock-n-Prog/rust-wasm-monorepo-starter-pack"
+license = "MIT"
+keywords = ["yew", "acme"]
+categories = ["gui", "wasm", "web"]
+
+# [lib]
+# crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+yew = { version = "0.20.0", features = ["csr"] }
+yew-router = "0.17.0"
+wasm-bindgen = "0.2.83"
+wasm-logger = "0.2.0"
