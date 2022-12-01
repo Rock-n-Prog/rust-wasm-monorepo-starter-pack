@@ -18,3 +18,7 @@ pub fn run_app() -> Result<(), JsValue> {
     yew::Renderer::<App>::new().render();
     Ok(())
 }
+
+pub fn main() {
+    run_app().expect("Ok");
+}

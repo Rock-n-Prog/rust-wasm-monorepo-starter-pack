@@ -9,8 +9,8 @@ license = "MIT"
 keywords = ["yew", "acme"]
 categories = ["gui", "wasm", "web"]
 
-[lib]
-crate-type = ["cdylib", "rlib"]
+# [lib]
+# crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 yew = { version = "0.20.0", features = ["csr"] }
