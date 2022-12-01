@@ -9,9 +9,9 @@ use crate::routes::{switch, AppRoute};
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
-        <div>
+        <HashRouter>
             <h1>{ "ACME Web App" }</h1>
             <Switch<AppRoute> render={switch} />
-        </div>
+        </HashRouter>
     }
 }
