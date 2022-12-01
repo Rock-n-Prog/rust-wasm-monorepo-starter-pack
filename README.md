@@ -12,7 +12,7 @@ Check the [project board](https://github.com/orgs/Rock-n-Prog/projects/2/views/1
 
 | Name          | Type | Status                                                                                                                                                                                                                               |
 |---------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Build Web App | App  | [![Build Web App](https://github.com/rock-n-prog/rust-wasm-monorepo-starter-pack/actions/workflows/build-web-app.yml/badge.svg)](https://github.com/rock-n-prog/rust-wasm-monorepo-starter-pack/actions/workflows/build-web-app.yml) |
+| Build Web App | App  | [![.github/workflows/build-web-app.yaml](https://github.com/Rock-n-Prog/rust-wasm-monorepo-starter-pack/actions/workflows/build-web-app.yaml/badge.svg)](https://github.com/Rock-n-Prog/rust-wasm-monorepo-starter-pack/actions/workflows/build-web-app.yaml) |
 
 ## Apps
 
