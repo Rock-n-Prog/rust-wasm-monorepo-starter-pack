@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-#[function_component(Home)]
-pub fn home() -> Html {
+#[function_component(HomePage)]
+pub fn home_page() -> Html {
     html! {
         <p>{ "Home" }</p>
     }
