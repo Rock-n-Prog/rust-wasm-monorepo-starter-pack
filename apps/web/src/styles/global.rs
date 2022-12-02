@@ -1,20 +1,24 @@
 use stylist::yew::{styled_component, Global};
 use yew::prelude::*;
 
-// TODO: Implement theming: https://github.com/futursolo/stylist-rs/tree/master/examples/yew-theme-context
+use crate::styles::theme::hooks::use_theme_context::use_theme_context;
 
-// TODO: Modify global styles
 #[styled_component(GlobalStyles)]
 pub fn global_styles() -> Html {
+    let theme_context = use_theme_context();
+
     html! {
-        <Global css={css!(r#"
-            html, body {
-                font-family: sans-serif;
-                padding: 0;
-                margin: 0;
-                min-height: 100vh;
-                background-color: rgb(237, 244, 255);
-            }
-        "#)} />
+        <Global css={css!(
+            r#"
+                html, body {
+                    font-family: sans-serif;
+                    padding: 0;
+                    margin: 0;
+                    min-height: 100vh;
+                    background-color: ${background};
+                }
+            "#,
+            background = theme_context.theme.colors.background,
+        )} />
     }
 }
