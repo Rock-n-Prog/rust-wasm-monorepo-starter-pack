@@ -4,6 +4,7 @@
 pub mod app;
 pub mod routes;
 pub mod domain;
+pub mod styles;
 
 use wasm_bindgen::prelude::*;
 use app::App;

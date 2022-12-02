@@ -19,6 +19,12 @@ Here's what we decided to use.
 
 - [Cargo](https://doc.rust-lang.org/stable/cargo)
 
+## Development Tools
+
+### Styling
+
+- [stylist](https://github.com/futursolo/stylist-rs)
+
 ## Project Management
 
 ### Task management
