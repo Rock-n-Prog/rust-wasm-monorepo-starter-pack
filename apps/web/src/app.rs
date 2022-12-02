@@ -4,6 +4,7 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 
 use crate::routes::{switch, AppRoute};
+use crate::components::navbar::Navbar;
 use crate::styles::global::GlobalStyles;
 
 /// The root app component
@@ -12,7 +13,7 @@ pub fn app() -> Html {
     html! {
         <BrowserRouter>
             <GlobalStyles />
-            <h1>{ "ACME Web App" }</h1>
+            <Navbar title="ACME Web App" />
             <main>
                 <Switch<AppRoute> render={switch} />
             </main>

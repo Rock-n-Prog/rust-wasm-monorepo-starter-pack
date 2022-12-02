@@ -2,8 +2,9 @@
 #![allow(clippy::unused_unit)]
 
 pub mod app;
-pub mod routes;
+pub mod components;
 pub mod domain;
+pub mod routes;
 pub mod styles;
 
 use wasm_bindgen::prelude::*;
