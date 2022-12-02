@@ -12,6 +12,9 @@ pub struct Props {
 pub fn navbar(props: &Props) -> Html {
     let theme_context = use_theme_context();
 
+    // TODO: Doesn't seem to do the trick for switching theme
+    let onclick = Callback::from(move |_| theme_context.switch_theme.emit(()));
+
     html! {
         <div class={css!(
             r#"
@@ -28,6 +31,7 @@ pub fn navbar(props: &Props) -> Html {
             breakpoint_s = theme_context.theme.breakpoints.s.clone(),
         )}>
             <h1>{ props.title.clone() }</h1>
+            <button {onclick}>{ "Switch theme" }</button>
         </div>
     }
 }
