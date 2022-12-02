@@ -1,3 +1,5 @@
+use yew::prelude::*;
+
 use crate::styles::theme::contexts::theme_context::ThemeContext;
 
 #[hook]

@@ -1,6 +1,6 @@
 use crate::styles::theme::types::breakpoints::Breakpoints;
 
-// Min-widths
+// Max widths
 pub fn get_breakpoints() -> Breakpoints {
     return Breakpoints {
         xs: "575px".to_string(),

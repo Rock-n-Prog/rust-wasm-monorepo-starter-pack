@@ -7,8 +7,8 @@ use crate::styles::theme::utils::get_theme::get_theme;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct ThemeContext {
-    theme: Rc<Theme>,
-    theme_kind: UseStateHandle<ThemeKind>,
+    pub theme: Rc<Theme>,
+    pub theme_kind: UseStateHandle<ThemeKind>,
 }
 
 #[derive(Debug, PartialEq, Properties)]
