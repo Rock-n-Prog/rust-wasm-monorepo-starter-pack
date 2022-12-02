@@ -17,16 +17,20 @@ pub fn navbar(props: &Props) -> Html {
     html! {
         <div class={css!(
             r#"
-                padding: ${spacing_xs} ${spacing_m};
+                padding: ${spacing_m} ${spacing_l};
                 display: flex;
-                justify-content: center;
+                align-items: center;
+                justify-content: space-between;
+                gap: ${spacing_m};
+                text-align: center;
 
                 @media only screen and (max-width: ${breakpoint_s}) {
-                    justify-content: flex-start;
+                    justify-content: center;
+                    flex-direction: column;
                 }
             "#,
-            spacing_xs = theme_context.theme.spacings.xs.clone(),
             spacing_m = theme_context.theme.spacings.m.clone(),
+            spacing_l = theme_context.theme.spacings.l.clone(),
             breakpoint_s = theme_context.theme.breakpoints.s.clone(),
         )}>
             <h1>{ props.title.clone() }</h1>

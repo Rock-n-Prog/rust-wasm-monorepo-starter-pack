@@ -10,15 +10,21 @@ pub fn global_styles() -> Html {
     html! {
         <Global css={css!(
             r#"
-                html, body {
-                    font-family: sans-serif;
+                * {
                     padding: 0;
                     margin: 0;
+                    height: min-content;
+                }
+
+                html, body {
+                    font-family: sans-serif;
                     min-height: 100vh;
                     background-color: ${background};
+                    color: ${on_background};
                 }
             "#,
             background = theme_context.theme.colors.background,
+            on_background = theme_context.theme.colors.on_background,
         )} />
     }
 }
