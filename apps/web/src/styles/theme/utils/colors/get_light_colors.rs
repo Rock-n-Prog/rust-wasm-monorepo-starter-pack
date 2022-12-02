@@ -1,24 +1,8 @@
-use crate::styles::theme::types::palette::{Palette, PaletteVariant};
 use crate::styles::theme::types::colors::{Colors, Variants, VariantColors, DisabledColors};
-use crate::styles::theme::types::theme_kind::ThemeKind;
 
-// https://coolors.co/c046d3-b118c8-7b108c-374766-061a40-04122c
-fn get_palette() -> Palette {
-    return Palette {
-        primary: PaletteVariant {
-            light: "#c046d3".to_string(),
-            main: "#B118C8".to_string(),
-            dark: "#7b108c".to_string()
-        },
-        secondary: PaletteVariant {
-            light: "#374766".to_string(),
-            main: "#061a40".to_string(),
-            dark: "#04122c".to_string()
-        }
-    }
-}
+use super::get_palette::get_palette;
 
-fn get_light_colors() -> Colors {
+pub fn get_light_colors() -> Colors {
     return Colors {
         palette: get_palette(),
         background: "#fff".to_string(),
@@ -54,13 +38,5 @@ fn get_light_colors() -> Colors {
             on_background: "rgba(0, 0, 0, 0.26)".to_string(),
             background: "rgba(0, 0, 0, 0.12)".to_string(),
         }
-    }
-}
-
-pub fn get_colors(theme_kind: &ThemeKind) -> Colors {
-    match theme_kind {
-        ThemeKind::Light => get_light_colors(),
-        // TODO: Dark colors (https://github.com/Rock-n-Prog/web-ts-monorepo-starter-pack/blob/main/packages/theme/index.ts)
-        ThemeKind::Dark => get_light_colors(),
     }
 }

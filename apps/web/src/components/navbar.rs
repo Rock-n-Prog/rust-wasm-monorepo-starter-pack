@@ -12,7 +12,6 @@ pub struct Props {
 pub fn navbar(props: &Props) -> Html {
     let theme_context = use_theme_context();
 
-    // TODO: Doesn't seem to do the trick for switching theme
     let onclick = Callback::from(move |_| theme_context.switch_theme.emit(()));
 
     html! {
