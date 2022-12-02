@@ -20,10 +20,10 @@ pub struct Props {
 pub fn theme_provider(props: &Props) -> Html {
     let theme_kind = use_state(|| ThemeKind::Dark);
     let theme = use_memo(|kind| get_theme(kind), theme_kind.clone());
-    let theme_ctx = ThemeContext { theme, theme_kind };
+    let theme_context = ThemeContext { theme, theme_kind };
 
     html! {
-        <ContextProvider<ThemeContext> context={theme_ctx}>
+        <ContextProvider<ThemeContext> context={theme_context}>
             { props.children.clone() }
         </ContextProvider<ThemeContext>>
     }
