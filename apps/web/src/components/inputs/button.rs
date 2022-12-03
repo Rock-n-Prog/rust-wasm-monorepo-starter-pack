@@ -38,7 +38,7 @@ fn get_colors(variant: ButtonVariant, colors: Colors) -> ButtonColors {
             hover_background: colors.palette.primary.light.clone(),
             hover_on_background: colors.on_primary.clone(),
             hover_active_background: colors.palette.primary.main.clone(),
-            hover_active_on_background: colors.on_primary.clone(),
+            hover_active_on_background: colors.on_primary,
         },
          ButtonVariant::Outlined => ButtonColors {
              border: colors.palette.primary.main.clone(),
@@ -47,7 +47,7 @@ fn get_colors(variant: ButtonVariant, colors: Colors) -> ButtonColors {
              hover_background: colors.palette.primary.main.clone(),
              hover_on_background: colors.on_primary.clone(),
              hover_active_background: colors.palette.primary.light.clone(),
-             hover_active_on_background: colors.on_primary.clone(),
+             hover_active_on_background: colors.on_primary,
          },
          ButtonVariant::Text => ButtonColors {
              border: "transparent".to_string(),
@@ -56,7 +56,7 @@ fn get_colors(variant: ButtonVariant, colors: Colors) -> ButtonColors {
              hover_background: "transparent".to_string(),
              hover_on_background: colors.palette.primary.light.clone(),
              hover_active_background: "transparent".to_string(),
-             hover_active_on_background: colors.palette.primary.main.clone(),
+             hover_active_on_background: colors.palette.primary.main,
          }
      }
 }
@@ -68,19 +68,6 @@ pub fn button(props: &Props) -> Html {
         Some(variant) => variant,
         None => ButtonVariant::Contained,
     }, colors.clone()), theme_context.theme.colors.clone());
-
-    // TODO: Add this
-    /*
-    &:hover {
-        color: ${hover_on_background};
-        background-color: ${hover_background};
-
-        &:active {
-            color: ${hover_active_on_background};
-            background-color: ${hover_active_background};
-        }
-    }
-    */
 
     // TODO: Add the following
     // cursor: ${disabled ? 'not-allowed' : 'pointer'};
@@ -100,15 +87,24 @@ pub fn button(props: &Props) -> Html {
                 line-height: 1.75;
                 border: solid 1px ${border};
                 cursor: pointer;
+
+                &:hover {
+                    color: ${hover_on_background};
+                    background-color: ${hover_background};
+                }
+
+                &:hover:active {
+                    color: ${hover_active_on_background};
+                    background-color: ${hover_active_background};
+                }
             "#,
             border = colors.border.clone(),
             background = colors.background.clone(),
             on_background = colors.on_background.clone(),
-            // TODO: Add hover values
-            // hover_background = colors.hover_background.clone(),
-            // hover_on_background = colors.hover_on_background.clone(),
-            // hover_active_background = colors.hover_active_background.clone(),
-            // hover_active_on_background = colors.hover_active_on_background.clone(),
+            hover_background = colors.hover_background.clone(),
+            hover_on_background = colors.hover_on_background.clone(),
+            hover_active_background = colors.hover_active_background.clone(),
+            hover_active_on_background = colors.hover_active_on_background.clone(),
             spacing_xxs = theme_context.theme.spacings.xxs.clone(),
             spacing_xs = theme_context.theme.spacings.xxs.clone(),
         )}
