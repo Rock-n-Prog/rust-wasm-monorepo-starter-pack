@@ -1,8 +1,7 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
-use yew_router::prelude::*;
-use crate::routes::AppRoute;
 use crate::domain::articles::api::get_articles;
+use super::article_list::ArticleList;
 
 #[function_component(ArticlesPage)]
 pub fn articles_page() -> Html {
@@ -13,9 +12,6 @@ pub fn articles_page() -> Html {
         )
     };
 
-    // TODO: Can this else if logic be done with a match?
-    // TODO: Loading component
-    // TODO: Error component (including final else)
     html! {
         <>
             <h2>{ "Articles" }</h2>
@@ -25,19 +21,7 @@ pub fn articles_page() -> Html {
                 } else if let Some(error) = &result.error {
                     html! { error }
                 } else if let Some(articles) = &result.data {
-                    html! {
-                        <ul>
-                            { for articles.iter().map(|article| {
-                                html! {
-                                    <li>
-                                        <Link<AppRoute> to={AppRoute::Article { id: article.id.clone() }}>
-                                            { article.title.clone() }
-                                        </Link<AppRoute>>
-                                    </li>
-                                }
-                            })}
-                        </ul>
-                    }
+                    html! { <ArticleList articles={articles.clone()} /> }
                 } else {
                     html! { "Could not fetch articles" }
                 }

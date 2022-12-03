@@ -19,9 +19,6 @@ pub fn article_page(props: &Props) -> Html {
         )
     };
 
-    // TODO: Can this else if logic be done with a match?
-    // TODO: Loading component
-    // TODO: Error component (including final else)
     html! {
         <>
             {
