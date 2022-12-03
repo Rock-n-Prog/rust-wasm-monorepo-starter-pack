@@ -4,8 +4,7 @@
 
 ## Code of conduct
 
-Before contributing to the project, please read our [code of conduct](CODE_OF_CONDUCT.md) and
-[docs]([docs](TODO).
+Before contributing to the project, please read our [code of conduct](CODE_OF_CONDUCT.md) and [docs](./docs/README.md).
 
 ## Task tracking
 
@@ -104,10 +103,8 @@ This requires reviewing code style, quality, tests and actual functionality of s
 
 ### Code style
 
-TODO: Update code style, this is for JS.
-
-We use [eslint](https://eslint.org) and [prettier](https://prettier.io). It is checked pre-commit and during CI check.
-To format code, use `pnpm lint:fix` and `pnpm format:fix`.
+We use [clippy](https://github.com/rust-lang/rust-clippy). It is checked pre-commit and during CI check. To format code,
+use `rustup component add clippy` and `cargo clippy`.
 
 No comment should be in the source code. Some exceptions are small explanations. In those rare cases, comments are clear
 and tiny.

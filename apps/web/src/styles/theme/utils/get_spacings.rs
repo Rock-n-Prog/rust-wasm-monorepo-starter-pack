@@ -1,7 +1,7 @@
 use crate::styles::theme::types::spacings::Spacings;
 
 pub fn get_spacings() -> Spacings {
-    return Spacings {
+    Spacings {
         xxs: ".25rem".to_string(), // 4 px
         xs: ".5rem".to_string(), // 8 px
         s: ".75rem".to_string(), // 12 px

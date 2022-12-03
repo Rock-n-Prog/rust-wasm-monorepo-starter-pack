@@ -3,7 +3,7 @@ use crate::styles::theme::types::colors::{Colors, Variants, VariantColors, Disab
 use super::get_palette::get_palette;
 
 pub fn get_light_colors() -> Colors {
-    return Colors {
+    Colors {
         palette: get_palette(),
         background: "#fff".to_string(),
         surface: "#fafafa".to_string(),
