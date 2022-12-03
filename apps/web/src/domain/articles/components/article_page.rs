@@ -1,6 +1,6 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
-use crate::components::feedback::loading_spinner::LoadingSpinner;
+use crate::components::feedback::{alert::Alert, loading_spinner::LoadingSpinner};
 use crate::domain::articles::api::get_article;
 use crate::domain::articles::comments::components::comment_list::CommentList;
 use crate::domain::not_found::components::not_found_page::NotFoundPage;
@@ -26,12 +26,13 @@ pub fn article_page(props: &Props) -> Html {
                 if result.loading {
                     html! { <LoadingSpinner /> }
                 } else if let Some(error) = &result.error {
-                    html! { error }
+                    html! { <Alert text={error.clone()} /> }
                 } else if let Some(article) = &result.data {
                     match article {
                         Some(article) => html! {
                             <>
                                 <h2>{ article.title.clone() }</h2>
+                                <Alert text="TODO: Testing, remove me!" />
                                 <p>{ article.content.clone() }</p>
                                 <h3>{ "Comments" }</h3>
                                 { if article.comments.is_empty() {
@@ -44,7 +45,7 @@ pub fn article_page(props: &Props) -> Html {
                         None => html! { <NotFoundPage /> },
                     }
                 } else {
-                    html! { "Could not fetch article" }
+                    html! { <Alert text="Could not fetch article" /> }
                 }
             }
         </>
