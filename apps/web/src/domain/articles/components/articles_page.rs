@@ -1,6 +1,6 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
-use crate::components::feedback::{alert::Alert, loading_spinner::LoadingSpinner};
+use crate::components::feedback::{alert::{Alert, Severity}, loading_spinner::LoadingSpinner};
 use crate::domain::articles::api::get_articles;
 use super::article_list::ArticleList;
 
@@ -20,11 +20,11 @@ pub fn articles_page() -> Html {
                 if result.loading {
                     html! { <LoadingSpinner /> }
                 } else if let Some(error) = &result.error {
-                    html! { <Alert text={error.clone()} /> }
+                    html! { <Alert text={error.clone()} severity={Severity::Error} /> }
                 } else if let Some(articles) = &result.data {
                     html! { <ArticleList articles={articles.clone()} /> }
                 } else {
-                    html! { <Alert text="Could not fetch articles" /> }
+                    html! { <Alert text="Could not fetch articles" severity={Severity::Error} /> }
                 }
             }
         </>
