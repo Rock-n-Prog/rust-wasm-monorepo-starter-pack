@@ -6,4 +6,5 @@ pub struct Spacings {
     pub m: String,
     pub l: String,
     pub xl: String,
+    pub container_max_width: String,
 }
