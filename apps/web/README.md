@@ -36,8 +36,8 @@ trunk build --release
 ### Lint
 
 ```bash
-pnpm lint
+# If needed, install clippy
+rustup component add clippy
 
-# To fix lint
-pnpm lint:fix
+cargo clippy
 ```
