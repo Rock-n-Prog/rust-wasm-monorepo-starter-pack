@@ -15,7 +15,7 @@ pub fn get_mock_articles() -> Vec<Article> {
             id: "2".to_string(),
             title: "Article no 2".to_string(),
             content: "Ayyyyy supp m8 lmao".to_string(),
-            comments: comments.clone().into_iter().filter(|c| c.id == "3").collect(),
+            comments: comments.into_iter().filter(|c| c.id == "3").collect(),
         },
         Article {
             id: "3".to_string(),
