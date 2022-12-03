@@ -1,5 +1,5 @@
-use crate::domain::articles::comments::mocks::comments::get_mock_comments;
-use crate::domain::articles::types::article::Article;
+use super::types::Article;
+use crate::domain::articles::comments::mocks::get_mock_comments;
 
 pub fn get_mock_articles() -> Vec<Article> {
     let comments = get_mock_comments();

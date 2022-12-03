@@ -1,10 +1,9 @@
 use yew::prelude::*;
-
-use crate::domain::articles::mocks::articles::get_mock_articles;
+use crate::domain::articles::api::get_articles;
 
 #[function_component(ArticlesPage)]
 pub fn articles_page() -> Html {
-    let articles = get_mock_articles();
+    let articles = get_articles();
 
     html! {
         <>

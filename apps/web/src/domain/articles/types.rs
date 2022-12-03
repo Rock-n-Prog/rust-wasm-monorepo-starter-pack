@@ -1,4 +1,4 @@
-use crate::domain::articles::comments::types::comment::Comment;
+use crate::domain::articles::comments::types::Comment;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Article {

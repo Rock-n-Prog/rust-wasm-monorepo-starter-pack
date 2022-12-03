@@ -1,4 +1,4 @@
-use crate::domain::articles::comments::types::comment::Comment;
+use super::types::Comment;
 
 pub fn get_mock_comments() -> Vec<Comment> {
     Vec::from([

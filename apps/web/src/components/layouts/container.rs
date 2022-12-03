@@ -1,6 +1,5 @@
 use stylist::yew::styled_component;
 use yew::prelude::*;
-
 use crate::styles::theme::hooks::use_theme_context::use_theme_context;
 
 #[derive(PartialEq, Properties)]

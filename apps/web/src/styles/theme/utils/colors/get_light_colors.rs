@@ -1,5 +1,4 @@
 use crate::styles::theme::types::colors::{Colors, Variants, VariantColors, DisabledColors};
-
 use super::get_palette::get_palette;
 
 pub fn get_light_colors() -> Colors {

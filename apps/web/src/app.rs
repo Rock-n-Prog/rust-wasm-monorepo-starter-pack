@@ -2,12 +2,11 @@
 
 use yew::prelude::*;
 use yew_router::prelude::*;
-
-use crate::routes::{switch, AppRoute};
 use crate::components::layouts::container::Container;
 use crate::components::navbar::Navbar;
 use crate::styles::global::GlobalStyles;
 use crate::styles::theme::contexts::theme_context::ThemeProvider;
+use super::routes::{switch, AppRoute};
 
 /// The root app component
 #[function_component(App)]

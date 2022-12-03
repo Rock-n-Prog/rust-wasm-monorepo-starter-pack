@@ -1,7 +1,8 @@
 use stylist::yew::styled_component;
 use yew::prelude::*;
-
+use yew_router::prelude::*;
 use crate::styles::theme::hooks::use_theme_context::use_theme_context;
+use crate::routes::AppRoute;
 
 #[derive(PartialEq, Properties)]
 pub struct Props {
@@ -35,7 +36,9 @@ pub fn navbar(props: &Props) -> Html {
             breakpoint_s = theme_context.theme.breakpoints.s.clone(),
             surface = theme_context.theme.colors.surface.clone(),
         )}>
-            <h1>{ props.title.clone() }</h1>
+            <Link<AppRoute> to={AppRoute::Home}>
+                <h1>{ props.title.clone() }</h1>
+            </Link<AppRoute>>
             <button {onclick}>{ "Switch theme" }</button>
         </div>
     }

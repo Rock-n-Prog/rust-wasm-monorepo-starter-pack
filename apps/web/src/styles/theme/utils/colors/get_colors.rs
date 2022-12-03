@@ -1,6 +1,5 @@
 use crate::styles::theme::types::colors::Colors;
 use crate::styles::theme::types::theme_kind::ThemeKind;
-
 use super::get_light_colors::get_light_colors;
 use super::get_dark_colors::get_dark_colors;
 

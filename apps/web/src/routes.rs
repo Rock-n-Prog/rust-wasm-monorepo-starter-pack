@@ -1,8 +1,5 @@
-//! Routes by yew_router
-
 use yew::prelude::*;
 use yew_router::prelude::*;
-
 use crate::domain::home::components::home_page::HomePage;
 use crate::domain::articles::components::articles_page::ArticlesPage;
 
