@@ -2,6 +2,7 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 use crate::routes::AppRoute;
 
+// TODO: Stylize page
 #[function_component(HomePage)]
 pub fn home_page() -> Html {
     html! {
