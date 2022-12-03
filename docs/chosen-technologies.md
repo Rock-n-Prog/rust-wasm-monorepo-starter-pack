@@ -25,6 +25,10 @@ Here's what we decided to use.
 
 - [stylist](https://github.com/futursolo/stylist-rs)
 
+### Linting
+
+- [clippy](https://github.com/rust-lang/rust-clippy)
+
 ## Project Management
 
 ### Task management
