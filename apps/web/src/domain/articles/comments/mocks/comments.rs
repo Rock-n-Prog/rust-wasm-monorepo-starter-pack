@@ -1,7 +1,7 @@
 use crate::domain::articles::comments::types::comment::Comment;
 
-pub fn get_mock_comments() -> Box<[Comment]> {
-    Box::new([
+pub fn get_mock_comments() -> Vec<Comment> {
+    Vec::from([
         Comment {
             id: "1".to_string(),
             text: "Wow!".to_string(),

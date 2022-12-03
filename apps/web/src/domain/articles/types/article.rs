@@ -5,5 +5,5 @@ pub struct Article {
     pub id: String,
     pub title: String,
     pub content: String,
-    pub comments: Box<[Comment]>,
+    pub comments: Vec<Comment>,
 }
