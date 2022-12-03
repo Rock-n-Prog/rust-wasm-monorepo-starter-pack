@@ -9,8 +9,8 @@ pub struct Props {
     pub title: String,
 }
 
-#[styled_component(Navbar)]
-pub fn navbar(props: &Props) -> Html {
+#[styled_component(Header)]
+pub fn header(props: &Props) -> Html {
     let theme_context = use_theme_context();
 
     let onclick = Callback::from(move |_| theme_context.switch_theme.emit(()));

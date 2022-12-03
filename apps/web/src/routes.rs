@@ -11,8 +11,7 @@ pub enum AppRoute {
     #[at("/articles")]
     Articles,
     // TODO: Nested routing?
-    // TODO: Getting not found?
-    #[at("/articles/{id}")]
+    #[at("/articles/:id")]
     Article { id: String },
     #[not_found]
     #[at("/404")]

@@ -3,7 +3,7 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 use crate::components::layouts::container::Container;
-use crate::components::navbar::Navbar;
+use crate::components::header::Header;
 use crate::styles::global::GlobalStyles;
 use crate::styles::theme::contexts::theme_context::ThemeProvider;
 use super::routes::{switch, AppRoute};
@@ -15,7 +15,7 @@ pub fn app() -> Html {
         <BrowserRouter>
             <ThemeProvider>
                 <GlobalStyles />
-                <Navbar title="ACME Web App" />
+                <Header title="ACME Web App" />
                 <main>
                     <Container>
                         <Switch<AppRoute> render={switch} />

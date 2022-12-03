@@ -1,2 +1,2 @@
 pub mod layouts;
-pub mod navbar;
+pub mod header;
