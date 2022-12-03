@@ -1,6 +1,5 @@
 use std::rc::Rc;
 use yew::prelude::*;
-
 use crate::styles::theme::types::theme::Theme;
 use crate::styles::theme::types::theme_kind::ThemeKind;
 use crate::styles::theme::utils::get_theme::get_theme;
