@@ -14,6 +14,7 @@ pub enum ButtonVariant {
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
     pub text: String,
+    pub disabled: Option<bool>,
     pub variant: Option<ButtonVariant>,
     pub onclick: Option<Callback<Event>>,
 }
@@ -28,35 +29,35 @@ struct ButtonColors {
     hover_active_on_background: String,
 }
 
-// TODO: Add disabled logic (https://github.com/Rock-n-Prog/web-ts-monorepo-starter-pack/blob/main/packages/web-ui/components/inputs/Button.tsx)
-fn get_colors(variant: ButtonVariant, colors: Colors) -> ButtonColors {
+// TODO: Improve this with match (variant, disabled), and/or Option for hover/active in ButtonColors
+fn get_colors(variant: ButtonVariant, disabled: bool, colors: Colors) -> ButtonColors {
      match variant {
         ButtonVariant::Contained => ButtonColors {
             border: "transparent".to_string(),
-            background: colors.palette.primary.main.clone(),
-            on_background: colors.on_primary.clone(),
-            hover_background: colors.palette.primary.light.clone(),
-            hover_on_background: colors.on_primary.clone(),
-            hover_active_background: colors.palette.primary.main.clone(),
-            hover_active_on_background: colors.on_primary,
+            background: if disabled { colors.disabled.background.clone() } else {colors.palette.primary.main.clone() },
+            on_background: if disabled { colors.disabled.on_background.clone() } else {colors.on_primary.clone() },
+            hover_background: if disabled { colors.disabled.background.clone() } else {colors.palette.primary.light.clone() },
+            hover_on_background: if disabled { colors.disabled.on_background.clone() } else {colors.on_primary.clone() },
+            hover_active_background: if disabled { colors.disabled.background.clone() } else {colors.palette.primary.main.clone() },
+            hover_active_on_background: if disabled { colors.disabled.on_background } else {colors.on_primary },
         },
          ButtonVariant::Outlined => ButtonColors {
-             border: colors.palette.primary.main.clone(),
+             border: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.main.clone() },
              background: "transparent".to_string(),
-             on_background: colors.palette.primary.main.clone(),
-             hover_background: colors.palette.primary.main.clone(),
-             hover_on_background: colors.on_primary.clone(),
-             hover_active_background: colors.palette.primary.light.clone(),
-             hover_active_on_background: colors.on_primary,
+             on_background: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.main.clone() },
+             hover_background: if disabled { "transparent".to_string() } else {colors.palette.primary.main.clone() },
+             hover_on_background: if disabled { colors.disabled.on_background.clone() } else { colors.on_primary.clone() },
+             hover_active_background: if disabled { "transparent".to_string() } else {colors.palette.primary.light.clone() },
+             hover_active_on_background: if disabled { colors.disabled.on_background } else { colors.on_primary },
          },
          ButtonVariant::Text => ButtonColors {
              border: "transparent".to_string(),
              background: "transparent".to_string(),
-             on_background: colors.palette.primary.main.clone(),
+             on_background: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.main.clone() },
              hover_background: "transparent".to_string(),
-             hover_on_background: colors.palette.primary.light.clone(),
+             hover_on_background: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.light.clone() },
              hover_active_background: "transparent".to_string(),
-             hover_active_on_background: colors.palette.primary.main,
+             hover_active_on_background: if disabled { colors.disabled.on_background } else { colors.palette.primary.main },
          }
      }
 }
@@ -64,13 +65,15 @@ fn get_colors(variant: ButtonVariant, colors: Colors) -> ButtonColors {
 #[styled_component(Button)]
 pub fn button(props: &Props) -> Html {
     let theme_context = use_theme_context();
-    let colors = use_memo(|colors| get_colors(match props.variant.clone() {
+    // TODO: Can we use "derivative" or similar to handle default values?
+    let disabled = props.disabled.unwrap_or(false);
+    let variant = match props.variant.clone() {
         Some(variant) => variant,
         None => ButtonVariant::Contained,
-    }, colors.clone()), theme_context.theme.colors.clone());
+    };
+    let colors = use_memo(|colors| get_colors(variant, disabled, colors.clone()), theme_context.theme.colors.clone());
 
     // TODO: Add the following
-    // cursor: ${disabled ? 'not-allowed' : 'pointer'};
     // font-weight: ${theme.fonts.weights.regular};
     // font-size: ${theme.fonts.sizes.s};
     html! {
@@ -86,7 +89,7 @@ pub fn button(props: &Props) -> Html {
                 text-transform: uppercase;
                 line-height: 1.75;
                 border: solid 1px ${border};
-                cursor: pointer;
+                cursor: ${cursor};
 
                 &:hover {
                     color: ${hover_on_background};
@@ -98,6 +101,7 @@ pub fn button(props: &Props) -> Html {
                     background-color: ${hover_active_background};
                 }
             "#,
+            cursor = if disabled { "not-allowed".to_string() } else { "pointer".to_string() },
             border = colors.border.clone(),
             background = colors.background.clone(),
             on_background = colors.on_background.clone(),
@@ -109,6 +113,7 @@ pub fn button(props: &Props) -> Html {
             spacing_xs = theme_context.theme.spacings.xxs.clone(),
         )}
             onclick={props.onclick.clone()}
+            {disabled}
         >
             { props.text.clone() }
         </button>
