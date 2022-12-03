@@ -1,6 +1,7 @@
 use stylist::yew::styled_component;
 use yew::prelude::*;
 use yew_router::prelude::*;
+use crate::components::inputs::button::Button;
 use crate::styles::theme::hooks::use_theme_context::use_theme_context;
 use crate::routes::AppRoute;
 
@@ -39,7 +40,7 @@ pub fn header(props: &Props) -> Html {
             <Link<AppRoute> to={AppRoute::Home}>
                 <h1 class={css!("margin: 0;")}>{ props.title.clone() }</h1>
             </Link<AppRoute>>
-            <button {onclick}>{ "Switch theme" }</button>
+            <Button {onclick} text="Switch theme" />
         </div>
     }
 }
