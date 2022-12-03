@@ -1,5 +1,6 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
+use crate::components::feedback::loading_spinner::LoadingSpinner;
 use crate::domain::articles::api::get_articles;
 use super::article_list::ArticleList;
 
@@ -17,7 +18,7 @@ pub fn articles_page() -> Html {
             <h2>{ "Articles" }</h2>
             {
                 if result.loading {
-                    html! { "Loading" }
+                    html! { <LoadingSpinner /> }
                 } else if let Some(error) = &result.error {
                     html! { error }
                 } else if let Some(articles) = &result.data {
