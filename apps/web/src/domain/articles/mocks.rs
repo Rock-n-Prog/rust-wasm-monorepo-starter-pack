@@ -25,3 +25,7 @@ pub fn get_mock_articles() -> Vec<Article> {
         },
     ])
 }
+
+pub fn get_mock_article(id: String) -> Option<Article> {
+    get_mock_articles().into_iter().find(|a| a.id == id)
+}

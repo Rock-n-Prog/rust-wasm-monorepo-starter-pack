@@ -1,8 +1,9 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
-use crate::domain::home::components::home_page::HomePage;
 use crate::domain::articles::components::article_page::ArticlePage;
 use crate::domain::articles::components::articles_page::ArticlesPage;
+use crate::domain::home::components::home_page::HomePage;
+use crate::domain::not_found::components::not_found_page::NotFoundPage;
 
 #[derive(Routable, Debug, Clone, PartialEq, Eq)]
 pub enum AppRoute {
@@ -10,7 +11,6 @@ pub enum AppRoute {
     Home,
     #[at("/articles")]
     Articles,
-    // TODO: Nested routing?
     #[at("/articles/:id")]
     Article { id: String },
     #[not_found]
@@ -23,6 +23,6 @@ pub fn switch(route: AppRoute) -> Html {
         AppRoute::Home => html! {<HomePage />},
         AppRoute::Articles => html! {<ArticlesPage />},
         AppRoute::Article { id } =>  html! {<ArticlePage id={id} />},
-        AppRoute::NotFound => html! { "Page not found" },
+        AppRoute::NotFound => html! { <NotFoundPage /> },
     }
 }

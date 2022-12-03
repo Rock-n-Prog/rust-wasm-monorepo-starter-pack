@@ -10,12 +10,12 @@ pub fn global_styles() -> Html {
         <Global css={css!(
             r#"
                 * {
-                    padding: 0;
-                    margin: 0;
                     height: min-content;
                 }
 
                 html, body {
+                    padding: 0;
+                    margin: 0;
                     font-family: sans-serif;
                     min-height: 100vh;
                     background-color: ${background};

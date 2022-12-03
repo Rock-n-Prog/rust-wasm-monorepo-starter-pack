@@ -1,16 +1,12 @@
 use super::types::Article;
-use super::mocks::get_mock_articles;
+use super::mocks::{get_mock_articles, get_mock_article};
+
+// TODO: Make all of those async (https://github.com/jetli/rust-yew-realworld-example-app/blob/master/crates/conduit-wasm/src/routes/article/mod.rs)
 
 pub fn get_articles() -> Vec<Article> {
-    return get_mock_articles();
+    get_mock_articles()
 }
 
-pub fn get_article(_id: String) -> Article {
-    // TODO: get_mock_articles with filter
-    Article {
-        id: "3".to_string(),
-        title: "One last for the run".to_string(),
-        content: "This is it folks, wrap it up.".to_string(),
-        comments: Vec::from([]),
-    }
+pub fn get_article(id: String) -> Option<Article> {
+    get_mock_article(id)
 }

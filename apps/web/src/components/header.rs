@@ -37,7 +37,7 @@ pub fn header(props: &Props) -> Html {
             surface = theme_context.theme.colors.surface.clone(),
         )}>
             <Link<AppRoute> to={AppRoute::Home}>
-                <h1>{ props.title.clone() }</h1>
+                <h1 class={css!("margin: 0;")}>{ props.title.clone() }</h1>
             </Link<AppRoute>>
             <button {onclick}>{ "Switch theme" }</button>
         </div>
