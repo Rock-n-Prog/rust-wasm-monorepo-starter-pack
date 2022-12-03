@@ -1,10 +1,10 @@
 use super::types::Article;
 use super::mocks::{get_mock_articles, get_mock_article};
 
-pub fn get_articles() -> Vec<Article> {
-    get_mock_articles()
+pub async fn get_articles() -> Result<Vec<Article>, String> {
+    Ok(get_mock_articles())
 }
 
-pub fn get_article(id: String) -> Option<Article> {
-    get_mock_article(id)
+pub async fn get_article(id: String) -> Result<Option<Article>, String> {
+    Ok(get_mock_article(id))
 }
