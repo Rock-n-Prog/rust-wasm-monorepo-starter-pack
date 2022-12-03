@@ -29,36 +29,63 @@ struct ButtonColors {
     hover_active_on_background: String,
 }
 
-// TODO: Improve this with match (variant, disabled), and/or Option for hover/active in ButtonColors
+// TODO: Improve this Option for hover/active in ButtonColors
 fn get_colors(variant: ButtonVariant, disabled: bool, colors: Colors) -> ButtonColors {
-     match variant {
-        ButtonVariant::Contained => ButtonColors {
+     match (variant, disabled) {
+         (ButtonVariant::Contained, false) => ButtonColors {
             border: "transparent".to_string(),
-            background: if disabled { colors.disabled.background.clone() } else {colors.palette.primary.main.clone() },
-            on_background: if disabled { colors.disabled.on_background.clone() } else {colors.on_primary.clone() },
-            hover_background: if disabled { colors.disabled.background.clone() } else {colors.palette.primary.light.clone() },
-            hover_on_background: if disabled { colors.disabled.on_background.clone() } else {colors.on_primary.clone() },
-            hover_active_background: if disabled { colors.disabled.background.clone() } else {colors.palette.primary.main.clone() },
-            hover_active_on_background: if disabled { colors.disabled.on_background } else {colors.on_primary },
+            background: colors.palette.primary.main.clone(),
+            on_background: colors.on_primary.clone(),
+            hover_background: colors.palette.primary.light.clone(),
+            hover_on_background: colors.on_primary.clone(),
+            hover_active_background: colors.palette.primary.main.clone(),
+            hover_active_on_background: colors.on_primary,
         },
-         ButtonVariant::Outlined => ButtonColors {
-             border: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.main.clone() },
+         (ButtonVariant::Outlined, false) => ButtonColors {
+             border: colors.palette.primary.main.clone(),
              background: "transparent".to_string(),
-             on_background: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.main.clone() },
-             hover_background: if disabled { "transparent".to_string() } else {colors.palette.primary.main.clone() },
-             hover_on_background: if disabled { colors.disabled.on_background.clone() } else { colors.on_primary.clone() },
-             hover_active_background: if disabled { "transparent".to_string() } else {colors.palette.primary.light.clone() },
-             hover_active_on_background: if disabled { colors.disabled.on_background } else { colors.on_primary },
+             on_background: colors.palette.primary.main.clone(),
+             hover_background: colors.palette.primary.main.clone(),
+             hover_on_background: colors.on_primary.clone(),
+             hover_active_background: colors.palette.primary.light.clone(),
+             hover_active_on_background: colors.on_primary,
          },
-         ButtonVariant::Text => ButtonColors {
+         (ButtonVariant::Text, false) => ButtonColors {
              border: "transparent".to_string(),
              background: "transparent".to_string(),
-             on_background: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.main.clone() },
+             on_background: colors.palette.primary.main.clone(),
              hover_background: "transparent".to_string(),
-             hover_on_background: if disabled { colors.disabled.on_background.clone() } else { colors.palette.primary.light.clone() },
+             hover_on_background: colors.palette.primary.light.clone(),
              hover_active_background: "transparent".to_string(),
-             hover_active_on_background: if disabled { colors.disabled.on_background } else { colors.palette.primary.main },
-         }
+             hover_active_on_background: colors.palette.primary.main,
+         },
+         (ButtonVariant::Contained, true) => ButtonColors {
+             border: "transparent".to_string(),
+             background: colors.disabled.background.clone(),
+             on_background:  colors.disabled.on_background.clone(),
+             hover_background:  colors.disabled.background.clone(),
+             hover_on_background:  colors.disabled.on_background.clone(),
+             hover_active_background:  colors.disabled.background.clone(),
+             hover_active_on_background:  colors.disabled.on_background,
+         },
+         (ButtonVariant::Outlined, true) => ButtonColors {
+             border:  colors.disabled.on_background.clone(),
+             background: "transparent".to_string(),
+             on_background:  colors.disabled.on_background.clone(),
+             hover_background:  "transparent".to_string(),
+             hover_on_background:  colors.disabled.on_background.clone(),
+             hover_active_background:  "transparent".to_string(),
+             hover_active_on_background:  colors.disabled.on_background,
+         },
+         (ButtonVariant::Text, true) => ButtonColors {
+             border: "transparent".to_string(),
+             background: "transparent".to_string(),
+             on_background: colors.disabled.on_background.clone(),
+             hover_background: "transparent".to_string(),
+             hover_on_background: colors.disabled.on_background.clone(),
+             hover_active_background: "transparent".to_string(),
+             hover_active_on_background: colors.disabled.on_background,
+         },
      }
 }
 
