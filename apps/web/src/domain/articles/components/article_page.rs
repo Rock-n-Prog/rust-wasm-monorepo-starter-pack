@@ -19,20 +19,17 @@ pub fn article_page(props: &Props) -> Html {
         )
     };
 
-    // TODO: Mega cleanup
+    // TODO: Can this else if logic be done with a match?
     // TODO: Loading component
-    // TODO: Error component
+    // TODO: Error component (including final else)
     html! {
         <>
             {
                 if result.loading {
                     html! { "Loading" }
-                } else {
-                    html! {}
-                }
-            }
-            {
-                if let Some(article) = &result.data {
+                } else if let Some(error) = &result.error {
+                    html! { error }
+                } else if let Some(article) = &result.data {
                     match article {
                         Some(article) => html! {
                             <>
@@ -49,14 +46,7 @@ pub fn article_page(props: &Props) -> Html {
                         None => html! { <NotFoundPage /> },
                     }
                 } else {
-                    html! {}
-                }
-            }
-            {
-                if let Some(error) = &result.error {
-                    html! { error }
-                } else {
-                    html! {}
+                    html! { "Could not fetch article" }
                 }
             }
         </>

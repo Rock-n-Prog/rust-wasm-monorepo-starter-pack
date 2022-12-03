@@ -13,24 +13,21 @@ pub fn articles_page() -> Html {
         )
     };
 
-    // TODO: Mega cleanup
+    // TODO: Can this else if logic be done with a match?
     // TODO: Loading component
-    // TODO: Error component
+    // TODO: Error component (including final else)
     html! {
         <>
             <h2>{ "Articles" }</h2>
             {
                 if result.loading {
                     html! { "Loading" }
-                } else {
-                    html! {}
-                }
-            }
-            {
-                if let Some(articles) = &result.data {
+                } else if let Some(error) = &result.error {
+                    html! { error }
+                } else if let Some(articles) = &result.data {
                     html! {
                         <ul>
-                            { for articles.into_iter().map(|article| {
+                            { for articles.iter().map(|article| {
                                 html! {
                                     <li>
                                         <Link<AppRoute> to={AppRoute::Article { id: article.id.clone() }}>
@@ -42,14 +39,7 @@ pub fn articles_page() -> Html {
                         </ul>
                     }
                 } else {
-                    html! {}
-                }
-            }
-            {
-                if let Some(error) = &result.error {
-                    html! { error }
-                } else {
-                    html! {}
+                    html! { "Could not fetch articles" }
                 }
             }
         </>
