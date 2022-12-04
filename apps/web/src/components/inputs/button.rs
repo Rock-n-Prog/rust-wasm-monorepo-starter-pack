@@ -31,7 +31,6 @@ struct ButtonColors {
     hover_active_on_background: String,
 }
 
-// TODO: Improve this Option for hover/active in ButtonColors
 fn get_colors(variant: ButtonVariant, disabled: bool, colors: Colors) -> ButtonColors {
      match (variant, disabled) {
          (ButtonVariant::Contained, false) => ButtonColors {

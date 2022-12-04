@@ -26,7 +26,6 @@ pub struct FontWeights {
     pub bolder: String,
 }
 
-// TODO: Is this used?
 // https://material.io/design/color/text-legibility.html#text-backgrounds
 #[derive(Debug, Clone, PartialEq)]
 pub struct FontEmphasis {
