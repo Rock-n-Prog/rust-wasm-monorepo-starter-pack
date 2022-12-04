@@ -11,7 +11,7 @@ pub struct Props {
 pub fn heading_1(props: &Props) -> Html {
     let theme_context = use_theme_context();
 
-    // TODO: Add typography styles
+    // TODO: Add typography styles (https://github.com/Rock-n-Prog/web-ts-monorepo-starter-pack/blob/main/packages/web-ui/components/typography/Typography.tsx)
     html! {
         <h1 class={css!(
             r#"
