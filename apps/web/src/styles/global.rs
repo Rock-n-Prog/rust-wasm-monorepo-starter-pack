@@ -11,6 +11,7 @@ pub fn global_styles() -> Html {
             r#"
                 * {
                     height: min-content;
+                    font-family: ${sans_serif};
                 }
 
                 html, body {
@@ -30,6 +31,7 @@ pub fn global_styles() -> Html {
                     color: ${primary};
                 }
             "#,
+            sans_serif = theme_context.theme.fonts.families.sans_serif,
             background = theme_context.theme.colors.background,
             on_background = theme_context.theme.colors.on_background,
             primary = theme_context.theme.colors.palette.primary.main,

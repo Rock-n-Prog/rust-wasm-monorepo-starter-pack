@@ -100,9 +100,6 @@ pub fn button(props: &Props) -> Html {
     };
     let colors = use_memo(|colors| get_colors(variant, disabled, colors.clone()), theme_context.theme.colors.clone());
 
-    // TODO: Add the following
-    // font-weight: ${theme.fonts.weights.regular};
-    // font-size: ${theme.fonts.sizes.s};
     html! {
         <button class={css!(
             r#"
@@ -117,6 +114,8 @@ pub fn button(props: &Props) -> Html {
                 line-height: 1.75;
                 border: solid 1px ${border};
                 cursor: ${cursor};
+                font-weight: ${font_weight_regular};
+                font-size: ${font_size_s};
 
                 &:hover {
                     color: ${hover_on_background};
@@ -128,6 +127,8 @@ pub fn button(props: &Props) -> Html {
                     background-color: ${hover_active_background};
                 }
             "#,
+            font_weight_regular = theme_context.theme.fonts.weights.regular.clone(),
+            font_size_s = theme_context.theme.fonts.sizes.s.clone(),
             cursor = if disabled { "not-allowed".to_string() } else { "pointer".to_string() },
             border = colors.border.clone(),
             background = colors.background.clone(),
