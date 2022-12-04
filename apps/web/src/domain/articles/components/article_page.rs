@@ -1,5 +1,7 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
+use crate::components::feedback::{alert::{Alert, Severity}, loading_spinner::LoadingSpinner};
+use crate::components::typography::{heading_2::Heading2, heading_3::Heading3, body_1::Body1};
 use crate::domain::articles::api::get_article;
 use crate::domain::articles::comments::components::comment_list::CommentList;
 use crate::domain::not_found::components::not_found_page::NotFoundPage;
@@ -23,18 +25,18 @@ pub fn article_page(props: &Props) -> Html {
         <>
             {
                 if result.loading {
-                    html! { "Loading" }
+                    html! { <LoadingSpinner /> }
                 } else if let Some(error) = &result.error {
-                    html! { error }
+                    html! { <Alert text={error.clone()} severity={Severity::Error} /> }
                 } else if let Some(article) = &result.data {
                     match article {
                         Some(article) => html! {
                             <>
-                                <h2>{ article.title.clone() }</h2>
-                                <p>{ article.content.clone() }</p>
-                                <h3>{ "Comments" }</h3>
+                                <Heading2>{ article.title.clone() }</Heading2>
+                                <Body1>{ article.content.clone() }</Body1>
+                                <Heading3>{ "Comments" }</Heading3>
                                 { if article.comments.is_empty() {
-                                    html! { <p>{ "No comments!" }</p> }
+                                    html! { <Body1>{ "No comments!" }</Body1> }
                                 } else {
                                     html! { <CommentList comments={article.comments.clone()} /> }
                                 }}
@@ -43,7 +45,7 @@ pub fn article_page(props: &Props) -> Html {
                         None => html! { <NotFoundPage /> },
                     }
                 } else {
-                    html! { "Could not fetch article" }
+                    html! { <Alert text="Could not fetch article" severity={Severity::Error} /> }
                 }
             }
         </>

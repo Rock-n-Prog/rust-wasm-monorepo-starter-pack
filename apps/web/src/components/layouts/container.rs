@@ -20,8 +20,10 @@ pub fn container(props: &Props) -> Html {
 
                 @media only screen and (max-width: ${breakpoint_s}) {
                     max-width: unset;
+                    padding: 0 ${spacing_s};
                 }
             "#,
+            spacing_s = theme_context.theme.spacings.s.clone(),
             spacing_l = theme_context.theme.spacings.l.clone(),
             container_max_width = theme_context.theme.spacings.container_max_width.clone(),
             breakpoint_s = theme_context.theme.breakpoints.s.clone(),

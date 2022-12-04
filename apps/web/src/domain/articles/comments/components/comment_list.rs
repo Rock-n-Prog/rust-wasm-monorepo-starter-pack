@@ -1,5 +1,6 @@
 use yew::prelude::*;
 use crate::domain::articles::comments::types::Comment;
+use crate::components::data::{list::List, list_item::ListItem};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
@@ -9,12 +10,12 @@ pub struct Props {
 #[function_component(CommentList)]
 pub fn comment_list(props: &Props) -> Html {
     html! {
-        <ul>
+        <List>
             { for props.comments.clone().into_iter().map(|comment| {
                 html! {
-                    <li>{ comment.text }</li>
+                    <ListItem>{ comment.text }</ListItem>
                 }
             })}
-        </ul>
+        </List>
     }
 }
