@@ -25,7 +25,7 @@ pub fn global_styles() -> Html {
                     font-size: ${font_size_m};
                 }
 
-                h1, h2, h3, p, span, a {
+                h1, h2, h3, p, span, a, li {
                     opacity: ${font_emphasis_high};
                 }
 
