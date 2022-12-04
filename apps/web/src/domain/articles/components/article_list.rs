@@ -15,11 +15,11 @@ pub fn article_list(props: &Props) -> Html {
         <ul>
             { for props.articles.clone().into_iter().map(|article| {
                 html! {
-                    <li>
-                        <Link<AppRoute> to={AppRoute::Article { id: article.id.clone() }}>
+                    <Link<AppRoute> to={AppRoute::Article { id: article.id.clone() }}>
+                        <li>
                             { article.title.clone() }
-                        </Link<AppRoute>>
-                    </li>
+                        </li>
+                    </Link<AppRoute>>
                 }
             })}
         </ul>
