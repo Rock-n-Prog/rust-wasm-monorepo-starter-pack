@@ -10,17 +10,23 @@ pub fn global_styles() -> Html {
         <Global css={css!(
             r#"
                 * {
+                    padding: 0;
+                    margin: 0;
                     height: min-content;
-                    font-family: ${sans_serif};
                 }
 
                 html, body {
-                    padding: 0;
-                    margin: 0;
                     font-family: sans-serif;
                     min-height: 100vh;
                     background-color: ${background};
                     color: ${on_background};
+                    font-family: ${sans_serif};
+                    font-weight: ${font_weight_regular};
+                    font-size: ${font_size_m};
+                }
+
+                h1, h2, h3, p, span, a {
+                    opacity: ${font_emphasis_high};
                 }
 
                 a {
@@ -32,6 +38,9 @@ pub fn global_styles() -> Html {
                 }
             "#,
             sans_serif = theme_context.theme.fonts.families.sans_serif,
+            font_weight_regular = theme_context.theme.fonts.weights.regular,
+            font_size_m = theme_context.theme.fonts.sizes.m,
+            font_emphasis_high = theme_context.theme.fonts.emphasis.high,
             background = theme_context.theme.colors.background,
             on_background = theme_context.theme.colors.on_background,
             primary = theme_context.theme.colors.palette.primary.main,

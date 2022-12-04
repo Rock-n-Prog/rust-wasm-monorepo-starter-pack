@@ -1,5 +1,6 @@
 use yew::prelude::*;
 use stylist::yew::styled_component;
+use crate::components::typography::body_1::Body1;
 use crate::styles::theme::hooks::use_theme_context::use_theme_context;
 use crate::styles::theme::types::colors::Variants;
 
@@ -62,7 +63,7 @@ pub fn alert(props: &Props) -> Html {
             spacing_s = theme_context.theme.spacings.s.clone(),
             spacing_m = theme_context.theme.spacings.m.clone(),
         )}>
-            <p>{ props.text.clone() }</p>
+            <Body1 no_margin={true}>{ props.text.clone() }</Body1>
         </div>
     }
 }

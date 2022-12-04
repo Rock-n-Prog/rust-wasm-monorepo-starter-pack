@@ -7,20 +7,20 @@ pub struct Props {
     pub children: Children,
 }
 
-#[styled_component(Heading2)]
-pub fn heading_2(props: &Props) -> Html {
+#[styled_component(Heading3)]
+pub fn heading_3(props: &Props) -> Html {
     let theme_context = use_theme_context();
 
     html! {
-        <h2 class={css!(
+        <h3 class={css!(
             r#"
-                font-size: ${font_size_xl};
+                font-size: ${font_size_l};
                 margin-bottom: ${spacing_xs};
             "#,
-            font_size_xl = theme_context.theme.fonts.sizes.xl.clone(),
+            font_size_l = theme_context.theme.fonts.sizes.l.clone(),
             spacing_xs = theme_context.theme.spacings.xs.clone(),
         )}>
             { props.children.clone() }
-        </h2>
+        </h3>
     }
 }

@@ -5,22 +5,22 @@ use crate::styles::theme::hooks::use_theme_context::use_theme_context;
 #[derive(PartialEq, Properties)]
 pub struct Props {
     pub children: Children,
+    #[prop_or(false)]
+    pub no_margin: bool,
 }
 
-#[styled_component(Heading2)]
-pub fn heading_2(props: &Props) -> Html {
+#[styled_component(Body1)]
+pub fn body_1(props: &Props) -> Html {
     let theme_context = use_theme_context();
 
     html! {
-        <h2 class={css!(
+        <p class={css!(
             r#"
-                font-size: ${font_size_xl};
-                margin-bottom: ${spacing_xs};
+                margin: ${margin};
             "#,
-            font_size_xl = theme_context.theme.fonts.sizes.xl.clone(),
-            spacing_xs = theme_context.theme.spacings.xs.clone(),
+            margin = if props.no_margin { "0".to_string() } else { format!("0 0 {margin_bottom} 0", margin_bottom = theme_context.theme.spacings.xxs.clone()) },
         )}>
             { props.children.clone() }
-        </h2>
+        </p>
     }
 }
