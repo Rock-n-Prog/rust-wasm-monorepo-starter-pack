@@ -1,6 +1,7 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
 use crate::components::feedback::{alert::{Alert, Severity}, loading_spinner::LoadingSpinner};
+use crate::components::typography::heading_2::Heading2;
 use crate::domain::articles::api::get_article;
 use crate::domain::articles::comments::components::comment_list::CommentList;
 use crate::domain::not_found::components::not_found_page::NotFoundPage;
@@ -20,6 +21,8 @@ pub fn article_page(props: &Props) -> Html {
         )
     };
 
+    // TODO: p (Body1)
+    // TODO: h3 (Heading3)
     html! {
         <>
             {
@@ -31,7 +34,7 @@ pub fn article_page(props: &Props) -> Html {
                     match article {
                         Some(article) => html! {
                             <>
-                                <h2>{ article.title.clone() }</h2>
+                                <Heading2>{ article.title.clone() }</Heading2>
                                 <p>{ article.content.clone() }</p>
                                 <h3>{ "Comments" }</h3>
                                 { if article.comments.is_empty() {

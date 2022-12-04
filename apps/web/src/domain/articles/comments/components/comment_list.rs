@@ -8,6 +8,7 @@ pub struct Props {
 
 #[function_component(CommentList)]
 pub fn comment_list(props: &Props) -> Html {
+    // TODO: List and ListItem components
     html! {
         <ul>
             { for props.comments.clone().into_iter().map(|comment| {

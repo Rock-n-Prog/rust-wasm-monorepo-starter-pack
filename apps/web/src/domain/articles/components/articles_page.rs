@@ -1,6 +1,7 @@
 use yew::prelude::*;
 use yew_hooks::prelude::*;
 use crate::components::feedback::{alert::{Alert, Severity}, loading_spinner::LoadingSpinner};
+use crate::components::typography::heading_2::Heading2;
 use crate::domain::articles::api::get_articles;
 use super::article_list::ArticleList;
 
@@ -15,7 +16,7 @@ pub fn articles_page() -> Html {
 
     html! {
         <>
-            <h2>{ "Articles" }</h2>
+            <Heading2>{ "Articles" }</Heading2>
             {
                 if result.loading {
                     html! { <LoadingSpinner /> }

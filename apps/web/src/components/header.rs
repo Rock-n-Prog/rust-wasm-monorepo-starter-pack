@@ -2,6 +2,7 @@ use stylist::yew::styled_component;
 use yew::prelude::*;
 use yew_router::prelude::*;
 use crate::components::inputs::button::Button;
+use crate::components::typography::heading_1::Heading1;
 use crate::styles::theme::hooks::use_theme_context::use_theme_context;
 use crate::routes::AppRoute;
 
@@ -16,6 +17,8 @@ pub fn header(props: &Props) -> Html {
 
     let onclick = Callback::from(move |_| theme_context.switch_theme.emit(()));
 
+    // TODO: add class to remove margin
+    // <Heading1 class={css!("margin: 0;")}>{ props.title.clone() }</Heading1>
     html! {
         <div class={css!(
             r#"
@@ -38,9 +41,9 @@ pub fn header(props: &Props) -> Html {
             surface = theme_context.theme.colors.surface.clone(),
         )}>
             <Link<AppRoute> to={AppRoute::Home}>
-                <h1 class={css!("margin: 0;")}>{ props.title.clone() }</h1>
+                <Heading1>{ props.title.clone() }</Heading1>
             </Link<AppRoute>>
-            <Button {onclick} text="Switch theme" />
+            <Button {onclick}>{ "Switch theme" }</Button>
         </div>
     }
 }

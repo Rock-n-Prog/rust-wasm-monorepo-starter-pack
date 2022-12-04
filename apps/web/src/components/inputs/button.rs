@@ -13,7 +13,7 @@ pub enum ButtonVariant {
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
-    pub text: String,
+    pub children: Children,
     #[prop_or(false)]
     pub disabled: bool,
     #[prop_or(ButtonVariant::Contained)]
@@ -138,7 +138,7 @@ pub fn button(props: &Props) -> Html {
             onclick={props.onclick.clone()}
             disabled={props.disabled}
         >
-            { props.text.clone() }
+            { props.children.clone() }
         </button>
     }
 }

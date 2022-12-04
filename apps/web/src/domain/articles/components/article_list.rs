@@ -10,6 +10,7 @@ pub struct Props {
 
 #[function_component(ArticleList)]
 pub fn article_list(props: &Props) -> Html {
+    // TODO: List and ListItem components
     html! {
         <ul>
             { for props.articles.clone().into_iter().map(|article| {
