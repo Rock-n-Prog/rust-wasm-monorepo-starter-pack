@@ -1,0 +1,24 @@
+[package]
+name = "acme-api"
+version = "0.0.0"
+edition = "2021"
+description = "tarpc API for ACME"
+readme = "README.md"
+repository = "https://github.com/Rock-n-Prog/rust-wasm-monorepo-starter-pack"
+license = "MIT"
+keywords = ["tarpc", "tokio", "acme"]
+categories = ["api", "rpc"]
+
+[dependencies]
+acme-api-lib = { path = "../../libs/api" }
+anyhow = "1.0.66"
+clap = { version = "4.0.29", features = ["derive"] }
+futures = "0.3.25"
+log = "0.4.17"
+opentelemetry = { version = "0.18.0", features = ["rt-tokio"] }
+opentelemetry-jaeger = { version = "0.17.0", features = ["rt-tokio"] }
+tarpc = { version = "0.31.0", features = ["full"] }
+tokio = { version = "1.22.0", features = ["macros", "net", "rt-multi-thread"] }
+tracing = "0.1.37"
+tracing-opentelemetry = "0.18.0"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }

@@ -1,0 +1,13 @@
+[package]
+name = "acme-api-lib"
+version = "0.0.0"
+edition = "2021"
+description = "tarpc API definition for ACEM"
+readme = "README.md"
+repository = "https://github.com/Rock-n-Prog/rust-wasm-monorepo-starter-pack"
+license = "MIT"
+keywords = ["tarpc", "acme"]
+categories = ["api", "rpc"]
+
+[dependencies]
+tarpc = { version = "0.31.0", features = ["full"] }
