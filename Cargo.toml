@@ -2,4 +2,6 @@
 
 members = [
     "apps/web",
+    "services/api",
+    "libs/api",
 ]
